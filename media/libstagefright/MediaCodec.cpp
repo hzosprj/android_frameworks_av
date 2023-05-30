@@ -669,7 +669,14 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientCreated() {
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
+<<<<<<< HEAD
     service->notifyClientCreated(clientInfo);
+=======
+    if (mService == NULL) {
+        return;
+    }
+    mService->notifyClientCreated(clientInfo);
+>>>>>>> 499b2e444b (MediaCodec: fix possible null pointer dereference)
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientStarted(
@@ -684,6 +691,9 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientStarted(
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
+    if (mService == NULL) {
+        return;
+    }
     service->notifyClientStarted(clientConfig);
 }
 
@@ -699,7 +709,14 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientStopped(
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
+<<<<<<< HEAD
     service->notifyClientStopped(clientConfig);
+=======
+    if (mService == NULL) {
+        return;
+    }
+    mService->notifyClientStopped(clientConfig);
+>>>>>>> 499b2e444b (MediaCodec: fix possible null pointer dereference)
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientConfigChanged(
@@ -714,7 +731,14 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientConfigChanged(
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
+<<<<<<< HEAD
     service->notifyClientConfigChanged(clientConfig);
+=======
+    if (mService == NULL) {
+        return;
+    }
+    mService->notifyClientConfigChanged(clientConfig);
+>>>>>>> 499b2e444b (MediaCodec: fix possible null pointer dereference)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
